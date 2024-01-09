@@ -4,9 +4,10 @@ import os
 
 """
 load_data
-Input: The name of two files containing the training set. 
-Description: Takes names of two files containing the training set and puts it into a list.
-Output: List of websites, reviews, and ratings.
+Input:         The name of two files containing the training set. 
+Description:   Takes names of two files containing the training set and puts it 
+               into a list.
+Output:        List of websites, reviews, and ratings.
 """
 def load_data(x_data, y_data):
     data_dir = 'data_reviews'
