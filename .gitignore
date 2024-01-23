@@ -1,0 +1,5 @@
+projectA/__pycache__/analysis.cpython-310.pyc
+projectA/__pycache__/clean_tokens.cpython-310.pyc
+projectA/data_reviews/x_test_BERT_embeddings.npy
+projectA/__pycache__/load_train_data.cpython-310.pyc
+projectA/data_reviews/x_train_BERT_embeddings.npy

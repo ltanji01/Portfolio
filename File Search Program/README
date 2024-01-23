@@ -1,0 +1,216 @@
+/******************************************************************************
+* Gerp
+* README
+******************************************************************************/
+
+Program Purpose: 
+----------------
+    'gerp' is a command-line tool inspired by the well-known 'grep'
+    program, designed to search for specific text patterns in one or more 
+    files. Our aim with 'gerp' is to provide a simple and efficient solution 
+    for searching through large amounts of text, while also offering some 
+    additional features that improve on the original 'grep' functionality.
+  
+
+Files: 
+------
+    FileIndex.h: provides the class declaration and function prototypes for the 
+                 FileIndex class which epresents an index of files and their 
+                 contents 
+
+    FileIndex.cpp: provide the implementation for the FileIndex class, which is 
+                   responsible for indexing files in a given directory and 
+                   building a data structure to efficiently search for words in 
+                   those files.
+
+    gerp.h: declares the Gerp class and its member functions. The class 
+            contains a FileIndex object and a HashTable object, which are used 
+            to store and search through file data.
+
+    gerp.cpp: contains the implementation of the Gerp class, which is a class 
+              that allows a user to search through a directory tree for specific
+              words or phrases within files.
+
+    words.h: declares "Words" struct and its member functions
+
+    words.cpp: defines "Words" struct and implements serval member functions
+
+    HashTable.cpp: defines a HashTable class which is used to implement a hash 
+                   table data structure. It also has several member functions 
+                   that implement hash table functionality
+
+    HashTable.h: provides the interface for using the HashTable class and its 
+                 member functions in other parts of the program.       
+
+    Makefile: used to compile project
+
+    README: file used to explain testing procedures, structures and 
+            algorithms used, time spent, an outline of files provided, the 
+            program purpose, and instructions for how to run the program
+
+
+How to compile and run:
+-----------------------
+    To compile: "make"
+    To run unit tests: "unit_test"
+    To run: "./gerp inputDirectory outputFile"
+    *Note that this program only is effective for valid directories. Per the
+    spec, our program doesn't need to handle cases where the file index can't
+    build. 
+    To submit: "make provide"
+
+
+Data Structures:
+----------------
+DirNode: represents a node in a directory tree used to represent
+         a directory or folder in a file system. It is a type of node that 
+         contains a list of child nodes, each of which can be another directory 
+         node or a file node. Plays a crucial role in the organization and 
+         management of files and directories in a file system. It allows users 
+         and applications to access and manipulate the contents of a directory, 
+         including its subdirectories and files.
+
+FSTree: represents a file system tree and contains information about the
+        directories, subdirectories, and files within a file system, along with 
+        their respective attributes. Provides a way to represent the file system
+        in a structured and organized way, making it easier to manage, backup, 
+        and search for files and directories.
+
+HashTable: used to store and retrieve search results and store indexed files 
+           and their contents. allows for efficient insertion, deletion, and 
+           lookup of values based on their keys. provides fast access to data. 
+
+Queue: a container used to hold the paths of all files in the directory tree. 
+       stores elements in a linear order and follows FIFO (First In First Out) 
+       principle, meaning that the first element added to the queue will be the 
+       first one to be removed. holds elements temporarily in memory and 
+       processes them in the order in which they were added. 
+
+List: a container that allows you to store and manipulate a collection of 
+      objects in a dynamic manner. It is implemented as a doubly-linked list of 
+      nodes, where each node contains a value and two pointers: one pointing to 
+      the previous node, and one pointing to the next node. is easily and 
+      efficientally manipulated. provide efficient insertions and deletions, 
+      iterator support, and can store elements of any data type.
+
+Vector: a container used to hold search results -  represents a dynamic array.
+        provide a dynamic array that can grow or shrink in size as needed at 
+        runtime, without the need for manual memory allocation and deallocation.
+
+Dynamic Array: an array that can resize itself during runtime, allowing for more
+               flexible memory allocation. In the context of implementing a hash 
+               table, a dynamic array can be used to store the buckets 
+               (or "chains") of the hash table. Each bucket of a hash table 
+               contains a linked list of key and values that have hashed to the 
+               same index. To handle collisions, the hash table needs to be able
+               to dynamically add and remove nodes from each bucket's linkedlist
+               A dynamic array can be used to store an array of linked lists, 
+               where each element in the array is a pointer to the head of a 
+               linked list.
+               As the hash table grows and more keys are inserted, the number of
+               buckets in the dynamic array can be increased to reduce the 
+               likelihood of collisions. This can be done by resizing the array
+               and rehashing all of the keys and values. Similarly, if the 
+               number of keys decreases, the number of buckets can be decreased 
+               to conserve memory. Overall, the dynamic array allows the hash 
+               table to efficiently handle changes in the number of keys it 
+               needs to store, while also ensuring that each bucket can 
+               accommodate multiple keys and values.
+
+Array of Vectors: In this program, we use an array of vector<Words> objects, 
+                  where Words is a custom data type that represents a word in a 
+                  text file along with its line number and the file path where 
+                  it was found. The array of vectors is used to implement a hash
+                  table where each element in the array represents a bucket and 
+                  the vectors inside the buckets are used to store collisions.
+
+Bugs:
+-----
+
+Edge Cases we thought of:
+--------
+* Tested to see if file names could be searched. 
+* If given a directory that can't be opened.
+* If file in directory can't be opened.
+* Input with no words: The function should be able to handle input with no words
+* Input with multiple white spaces between words: The function should be able to 
+handle input with multiple white spaces between words and correctly split them 
+into individual words.
+* Input with special chars: The function should be able to handle input with 
+special chars (e.g. punctuation marks) and correctly split them into individual 
+words.
+* Input with @f or @i commands followed by no filename or query: The function 
+should be able to handle input with @f or @i commands followed by no filename or 
+query and not crash.
+* Input with @f or @i commands followed by a non-existing filename: The function 
+should be able to handle input with @f or @i commands followed by a non-existing 
+filename and print an appropriate error message.
+* Input with @f or @i commands followed by a directory name: The function should 
+be able to handle input with @f or @i commands followed by a directory name and 
+print an appropriate error message.
+* Input with a query that contains no matches: The function should be able to 
+handle input with a query that contains no matches and print an appropriate 
+message to the console.
+* Input with a query that matches a large number of files: The function should 
+be able to handle input with a query that matches a large number of files and 
+not crash or hang.
+
+Testing:
+--------
+    everything in WordChain.h was made public for testing.
+    words.h = accounts for words with nonalphanumeric leading/trailing characters by 
+    stripping them after the string is read from the file. 
+
+    PrintAllFilePaths: initially output was couted from unit_test to see if it
+    looked right. Then output was directed to an outputfile and diffed.
+    
+    During the testing of our implementation of the gerp class, we used the 
+    reference implementation to compare our outputs with expected outputs. This 
+    helped us discover multiple edge cases that we hadn't considered before and made
+    our implementation more robust. For example, we discovered that our 
+    implementation didn't handle files with certain characters, such as tab 
+    characters, correctly. We also discovered that the specification didn't address 
+    the behavior of the program when encountering empty files or files with only 
+    whitespace characters. By testing our implementation against the reference i
+    mplementation, we were able to identify and address these issues, resulting in a
+    more reliable and accurate program.
+
+    We have developed a suite of unit tests to verify the correctness of our program
+
+    HashTable class: Our tests cover the basic functionality of the class, including 
+    insertion, searching, and resizing, as well as edge cases such as duplicate keys
+    and collisions. These tests are intended to make sure that the hash table 
+    constructor functions are working properly, the empty table is being built 
+    correctly, and the insertion of the words is being done accurately. Moreover, 
+    these tests also validate the resizing of the hash table, whether at the correct 
+    capacity, and that the hashtable is correctly copied over to the new array. The 
+    search function has also been tested to ensure that the given lowercase words 
+    that were inserted are found. All tests were executed using the C++ assert 
+    statement, which throws an error if the statement fails, indicating that there 
+    is an issue that needs to be fixed.We have also tested the integration of the 
+    HashTable class with other components of the program, such as the FileIndex 
+    class, to ensure that the overall functionality is correct. In addition, we have 
+    tested our implementation against a reference implementation and discovered 
+    several edge cases that were not explicitly addressed in the specification. Had
+    issues with the hash table going out of scope but fixed those after we debugged
+    for a few hours. 
+
+    FileIndex class: These tests focus on ensuring that the traverseFile function 
+    works properly, and that the words in a file are processed and stored correctly 
+    in the Words class and the HashTable. Three test functions are provided, with 
+    one checking if the file can be opened, one checking if each word in a file is 
+    processed properly, and the other checking if the Words class is populated 
+    correctly with the words from the file. There is also an additional test that 
+    checks if the words are stored correctly in the hash table. 
+
+    Gerp: The Gerp class is a program that allows users to search for keywords in 
+    files. The tests cover several functions within the Gerp class, including 
+    handle_quit_command(), handle_file_command(), handle_insensitive_command(), and 
+    handle_sensitive_search(). These tests verify that each function executes 
+    correctly and that the output is as expected. Additionally, the 
+    test_Gerp_commands() function tests the Gerp class as a whole, simulating user 
+    input and verifying that the program handles different commands correctly. These 
+    unit tests help ensure the reliability and correctness of the Gerp program.A
+
+    We also had valgrind errors for most of our testing, but realized it was an
+    issue with our destructor deleting twice. 
