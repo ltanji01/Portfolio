@@ -8,7 +8,7 @@ Students had to build two logistic regression classifier that takes a single sen
 * Avtar Rekhi
 * Professor Michael Hughes, the instructor for CS135, provided the dataset in the data_reviews folder and wrote the [assignment](https://github.com/ltanji01/Portfolio/blob/0a86be3a2b29a0c5850adf0a19b35c652172085c/projectA/Project%20A_%20Classifying%20Sentiment%20from%20Text%20Reviews%20_%20Intro%20to%20Machine%20Learning.pdf).
 
-## Official Review Classifier (a.k.a. ProjectA) Instructions
+## Official Review Classifier (a.k.a. Project A) Instructions
 https://github.com/ltanji01/Portfolio/blob/0a86be3a2b29a0c5850adf0a19b35c652172085c/projectA/Project%20A_%20Classifying%20Sentiment%20from%20Text%20Reviews%20_%20Intro%20to%20Machine%20Learning.pdf
 
 ## Files in this repository:
