@@ -25,9 +25,6 @@ patients blood pressure within a 24 hour time frame.
 * Leigh Tanji
 * Kyle Dimock
 
-## Official Review Classifier (a.k.a. Project A) Instructions
-https://github.com/ltanji01/Portfolio/blob/0a86be3a2b29a0c5850adf0a19b35c652172085c/projectA/Project%20A_%20Classifying%20Sentiment%20from%20Text%20Reviews%20_%20Intro%20to%20Machine%20Learning.pdf
-
 ## Files in this repository:
 ### SQL Queries: 
 * 5hr_BP
